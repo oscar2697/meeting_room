@@ -1,9 +1,9 @@
-// Fixed build error related to missing './globals.css' in Next.js
+// Fixed Next.js build error (missing 'globals.css') with proper relative path
 
 // layout.tsx
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import "../../globals.css"; // Simplified relative path for Next.js build compatibility
+import "@/app/globals.css"; // Use absolute path alias to ensure compatibility
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster";
 import "@stream-io/video-react-sdk/dist/css/styles.css";
