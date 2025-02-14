@@ -1,23 +1,31 @@
-import { StreamVideoProvider } from "@/providers/StreamClientProvider"
-import { Metadata } from "next";
-import { ReactNode } from "react"
+import type { Metadata } from "next";
+import { Geist } from "next/font/google";
+import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "@/components/ui/toaster";
+import "@stream-io/video-react-sdk/dist/css/styles.css";
+import 'react-datepicker/dist/react-datepicker.css';
+
+const geistSans = Geist({
+    variable: "--font-geist-sans",
+    subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
     title: "YOOM",
     description: "Video Calling app",
-    icons: {
-        icon: '/icons/logo.svg'
-    }
+    icons: { icon: '/icons/logo.svg' }
 };
 
-const RootLayout = ({ children }: { children: ReactNode }) => {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <main>
-            <StreamVideoProvider>
-                {children}
-            </StreamVideoProvider>
-        </main>
-    )
+        <html lang="en">
+            <ClerkProvider>
+                <body className={`${geistSans.className} bg-dark-2`}>
+                    {children}
+                    <Toaster />
+                </body>
+            </ClerkProvider>
+        </html>
+    );
 }
-
-export default RootLayout
