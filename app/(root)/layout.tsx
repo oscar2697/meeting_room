@@ -1,8 +1,7 @@
-// Fixed Next.js build error (ESLint issue) by removing unused variable
+// Fixed Next.js build error (ESLint issue) by removing unused variables
 
 // layout.tsx
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import "@/app/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster";
